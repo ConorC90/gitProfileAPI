@@ -1,0 +1,14 @@
+.profile-card--body {
+  display: flex;
+  margin-top: 50px;
+}
+.profile-card--thumbnail {
+  width: 25%;
+  padding-right: 15px;
+}
+.profile-card--description {
+  width: 75%;
+}
+.profile-card--thumbnail img {
+  width: 100%;
+}

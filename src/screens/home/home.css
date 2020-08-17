@@ -1,0 +1,42 @@
+.search-profiles {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  padding: 5em 50px;
+  align-items: center;
+}
+.search-profiles--form {
+  display: flex;
+}
+.search-profiles--form .form-group {
+  margin: 0 10px 0 0;
+}
+.search-profiles--form input {
+  min-width: 400px;
+}
+
+.search-profiles--form button {
+  padding-left: 25px;
+  padding-right: 25px;
+  align-self: flex-start;
+}
+.profiles-list {
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.profile {
+  width: 25%;
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+.profile--description {
+  max-height: 140px;
+  margin-top: 10px;
+  font-size: 12px;
+  overflow: auto;
+}
+.bar-chart {
+  height: 400px;
+  width: 750px;
+}
