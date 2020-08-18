@@ -21,7 +21,9 @@ const renderProfilesList = (data, query) => {
           <ProfilesCard key={profile.id} profile={profile} />
         ))}
       </div>
-      <BarChart className="bar-chart" data={data.items} />
+      <div>
+      <BarChart  data={data.items} />
+      </div>
     </>
   );
 };

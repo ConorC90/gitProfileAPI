@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Bar } from "react-chartjs-2";
-
+import "../home.css";
 class BarChart extends React.Component {
   constructor(props) {
     super(props);
@@ -56,7 +56,7 @@ class BarChart extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="bar-chart">
         <Bar
           data={this.state.chartData}
           options={{
@@ -69,10 +69,7 @@ class BarChart extends React.Component {
               display: true,
               position: "right",
             },
-            height: 150,
-            width: 300,
             fontSize: 25,
-            maintainAspectRatio: false,
           }}
         />
       </div>
