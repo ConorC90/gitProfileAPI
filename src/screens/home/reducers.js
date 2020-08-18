@@ -8,7 +8,6 @@ const initalState = {
 };
 
 export const profiles = (state = initalState, action) => {
-  console.log("action type", action.type);
   switch (action.type) {
     case REQUEST_PROFILES:
       return Object.assign({}, state, {

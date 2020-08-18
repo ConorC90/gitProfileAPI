@@ -12,7 +12,6 @@ const renderProfilesList = (data, query) => {
     return null;
   }
   let { items: profiles } = data;
-  console.log(data, "lets get some answers");
   return (
     <>
       <h3>Search results for: {query}</h3>
@@ -22,7 +21,8 @@ const renderProfilesList = (data, query) => {
         ))}
       </div>
       <div>
-      <BarChart  data={data.items} />
+      <BarChart  data={data.items.map((login) => login.login)
+          .slice(0, 10)} />
       </div>
     </>
   );

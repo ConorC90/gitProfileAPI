@@ -7,11 +7,12 @@ class BarChart extends React.Component {
     super(props);
     this.state = {
       chartData: {
-        labels: [],
+        labels: this.props.data,
         datasets: [
           {
             borderColor: "rgba(0,0,0,1)",
             borderWidth: 2,
+            label: "Followers",
             data: [],
             backgroundColor: [
               "rgba(255, 99, 132, 0.6)",
@@ -28,28 +29,55 @@ class BarChart extends React.Component {
           },
         ],
       },
+      options: {
+        title: {
+          display: true,
+          text: "Github followers",
+          fontSize: 20,
+        },
+        legend: {
+          display: true,
+          position: "right",
+        },
+        fontSize: 25,
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "Number of followers",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "GithHub User login",
+              },
+            },
+          ],
+        },
+      },
     };
   }
   componentDidMount() {
-    console.log("mount");
-    this.componentDidUpdate();
-  }
-  componentDidUpdate() {
-    console.log("update");
-    this.getFirstTenUsers();
     this.callsForFirstTenUsers();
   }
 
-  getFirstTenUsers() {
-    this.state.chartData.labels = this.props.data
-      .map((login) => login.login)
-      .slice(0, 10);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.data !== nextProps.data) {
+      this.setState({
+        chartData: { ...this.state.chartData, labels: nextProps.data },
+      });
+      this.callsForFirstTenUsers();
+    }
   }
   callsForFirstTenUsers() {
-    this.state.chartData.labels.forEach((element) => {
+    this.props.data.forEach((element) => {
       axios.get(`https://api.github.com/users/${element}`).then((res) => {
         this.state.chartData.datasets[0].data.push(res.data.followers);
-        console.log(res.data.followers);
+        console.log(this.state.chartData.datasets[0].data, res.data.followers);
       });
     });
   }
@@ -59,18 +87,8 @@ class BarChart extends React.Component {
       <div className="bar-chart">
         <Bar
           data={this.state.chartData}
-          options={{
-            title: {
-              display: true,
-              text: "Github followers",
-              fontSize: 20,
-            },
-            legend: {
-              display: true,
-              position: "right",
-            },
-            fontSize: 25,
-          }}
+          options={this.state.options}
+          redraw={true}
         />
       </div>
     );

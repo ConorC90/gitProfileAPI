@@ -14,7 +14,6 @@ const Search = ({ getProfiles, query }) => {
     getProfiles(query);
   }, 700);
   const thereIsAnError = (error) => {
-    console.log("nope again");
     getError(error);
   };
 
