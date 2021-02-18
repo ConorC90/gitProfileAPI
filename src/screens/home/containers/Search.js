@@ -19,13 +19,9 @@ const Search = ({ getProfiles, query }) => {
 
   const commitSearch = (e) => {
     const searchTerm = document.getElementById("formBasicEmail").value;
-    if (searchTerm.length < 4) {
-      thereIsAnError("Your search term must be at least 4 characters long");
-    } else if (searchTerm === "gcpglobal") {
-      thereIsAnError(
-        "It is forbidden to search for gcpglobal. Please search for a different profile"
-      );
-    } else {
+    if (searchTerm.length < 1) {
+      thereIsAnError("Your search term must be at least 1 characters long");
+    }  else {
       debouncedGetProfiles(searchTerm);
     }
   };

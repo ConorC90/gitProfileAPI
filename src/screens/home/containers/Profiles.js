@@ -5,7 +5,6 @@ import isEmpty from "lodash/isEmpty";
 import ProfilesCard from "../components/ProfilesCard";
 import Errors from "../components/Errors";
 import "../home.css";
-import BarChart from "../components/BarChart";
 
 const renderProfilesList = (data, query) => {
   if (isEmpty(data)) {
@@ -13,18 +12,14 @@ const renderProfilesList = (data, query) => {
   }
   let { items: profiles } = data;
   return (
-    <>
+    <div>
       <h3>Search results for: {query}</h3>
       <div className="profiles-list">
-        {profiles.slice(0, 20).map((profile) => (
+        {profiles.map((profile) => (
           <ProfilesCard key={profile.id} profile={profile} />
         ))}
       </div>
-      <div>
-      <BarChart  data={data.items.map((login) => login.login)
-          .slice(0, 10)} />
-      </div>
-    </>
+    </div>
   );
 };
 

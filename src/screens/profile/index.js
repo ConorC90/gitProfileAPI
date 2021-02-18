@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import isEmpty from "lodash/isEmpty";
 import Image from "react-bootstrap/Image";
+import Spinner from 'react-bootstrap/Spinner'
 import Media from "react-bootstrap/Media";
 import ListGroup from "react-bootstrap/ListGroup";
 import "./profile.css";
@@ -26,7 +27,9 @@ const Profile = ({ match: { params } }) => {
 
   let jsxStr = "";
   if (isFetching) {
-    jsxStr = <p>Loading...</p>;
+    jsxStr = <Spinner animation="border" role="status">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
   }
 
   if (!isEmpty(proflieInfo)) {

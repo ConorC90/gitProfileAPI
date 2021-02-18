@@ -9,7 +9,7 @@ const ProfilesCard = ({ profile }) => {
         <Card>
           <Card.Img variant="top" src={profile.avatar_url} />
           <Card.Body>
-            <Card.Title>Login {profile.login}</Card.Title>
+            <Card.Title>Login: {profile.login}</Card.Title>
             <Card.Subtitle>ID: {profile.id}</Card.Subtitle>
             <Card.Text className="profile--description">{}</Card.Text>
           </Card.Body>
