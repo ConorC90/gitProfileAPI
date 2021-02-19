@@ -8,17 +8,17 @@ import ListGroup from "react-bootstrap/ListGroup";
 import "./profile.css";
 
 const Profile = ({ match: { params } }) => {
-  const [proflieInfo, setBookInfo] = useState({});
+  const [proflieInfo, setProfileInfo] = useState({});
   const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
     setIsFetching(true);
     axios
       .get(`https://api.github.com/users/${params.ID}`)
       .then((response) => {
-        setBookInfo(response.data);
+        setProfileInfo(response.data);
       })
       .catch(() => {
-        setBookInfo({});
+        setProfileInfo({});
       })
       .finally(() => {
         setIsFetching(false);

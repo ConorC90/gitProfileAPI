@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import { getProfiles, getError } from "../actions";
 import debounce from "lodash/debounce";
 
-const Search = ({ getProfiles, query }) => {
+const Search = ({ getProfiles, query, isFetching }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
@@ -25,6 +25,7 @@ const Search = ({ getProfiles, query }) => {
       debouncedGetProfiles(searchTerm);
     }
   };
+
 
   return (
     <div className="search-profiles">
@@ -48,6 +49,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
   return {
     query: state.profiles.query,
     errorMessage: false,
+    isFetching: state.profiles.isFetching
   };
 };
 

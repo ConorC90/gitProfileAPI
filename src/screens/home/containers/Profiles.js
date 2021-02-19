@@ -25,7 +25,6 @@ const renderProfilesList = (data, query) => {
 
 const Profiles = ({ data, isFetching, query, error }) => {
   let jsxStr = "";
-
   if (isFetching) {
     jsxStr = (
       <div>
