@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import Loading from "../home/components/Loading"
 import isEmpty from "lodash/isEmpty";
+import axios from "axios";
 import Image from "react-bootstrap/Image";
-import Spinner from 'react-bootstrap/Spinner'
 import Media from "react-bootstrap/Media";
 import ListGroup from "react-bootstrap/ListGroup";
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import "./profile.css";
+
+
 
 const Profile = ({ match: { params } }) => {
   const [proflieInfo, setProfileInfo] = useState({});
@@ -26,51 +30,52 @@ const Profile = ({ match: { params } }) => {
   }, [params.ID]);
 
   let jsxStr = "";
-  if (isFetching) {
-    jsxStr = <Spinner animation="border" role="status">
-      <span className="sr-only">Loading...</span>
-    </Spinner>
-  }
-
   if (!isEmpty(proflieInfo)) {
     jsxStr = (
-      <div className="profile-card">
-        <Media>
-          <Media.Body>
-            <h1>{proflieInfo.login}</h1>
-            <h3>{proflieInfo.location}</h3>
-
-            <ListGroup>
-              <ListGroup.Item>
-                Public Repos: {proflieInfo.public_repos}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Followers: {proflieInfo.followers}{" "}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Following: {proflieInfo.following}{" "}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Account created on: {proflieInfo.created_at.slice(0, 10)}
-              </ListGroup.Item>
-            </ListGroup>
-          </Media.Body>
+        <Row xs={1} md={2}>
+          <Col>
+            <Media className="width-auto m-3">
+              <Media.Body>
+                <a href={proflieInfo.html_url}>
+                <h1>{proflieInfo.login}</h1>
+                </a>
+                <h3>{proflieInfo.location}</h3>
+                <ListGroup>
+                  <ListGroup.Item>
+                    Public Repos: {proflieInfo.public_repos}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Followers: {proflieInfo.followers}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Following: {proflieInfo.following}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Account created on: {proflieInfo.created_at.slice(0, 10)}
+                  </ListGroup.Item>
+                </ListGroup>
+              </Media.Body>
+            </Media>
+          </Col>
+          <Col className="justify-center align-center flex">
           <Image
             width={225}
             height={225}
             rounded
-            className="ml-3"
+            className="m-3"
             src={proflieInfo.avatar_url}
             alt="Git hub profile picture"
           />
-        </Media>
-      </div>
+          </Col>
+      </Row>
     );
   }
 
   return (
     <div id="profile" className="page">
-      <div className="container">{jsxStr}</div>
+      <div className="container">
+        {isFetching && <Loading></Loading>}
+        {jsxStr}</div>
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
 
 const ProfilesCard = ({ profile }) => {
   return (
-    <div className="profile">
-      <Link className="profile" to={`/profile/${profile.login}`}>
+    <Col xs={12} sm={6} md={4} lg={3} >
+      <Link to={`/profile/${profile.login}`}>
         <Card>
           <Card.Img variant="top" src={profile.avatar_url} />
           <Card.Body>
@@ -15,7 +16,7 @@ const ProfilesCard = ({ profile }) => {
           </Card.Body>
         </Card>
       </Link>
-    </div>
+    </Col>
   );
 };
 

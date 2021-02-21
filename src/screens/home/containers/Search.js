@@ -1,47 +1,60 @@
-import React from "react";
+import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getProfiles, getError } from "../actions";
-import debounce from "lodash/debounce";
+import { getProfiles } from "../actions";
+import { Loading } from "../components/Loading"
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
-const Search = ({ getProfiles, query, isFetching }) => {
+const Search = ({ getProfiles, isFetching}) => {
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-  };
-  const debouncedGetProfiles = debounce((query) => {
-    getProfiles(query);
-  }, 700);
-  const thereIsAnError = (error) => {
-    getError(error);
+    commitSearch()
   };
 
-  const commitSearch = (e) => {
-    const searchTerm = document.getElementById("formBasicEmail").value;
-    if (searchTerm.length < 1) {
-      thereIsAnError("Your search term must be at least 1 characters long");
-    }  else {
-      debouncedGetProfiles(searchTerm);
-    }
+const [searchTerm , setSearchTerm] = useState('');
+
+  const commitSearch = () => {
+    getProfiles(searchTerm);
   };
 
-
+  let jsxStr = "";
+  if(isFetching){
+    jsxStr = (
+        <Loading></Loading>
+    )
+  }
+if(!isFetching){
+  jsxStr =  (
+      <Container>
+        <Row>
+          <Col xs={12} md={10}>
+          <Form onSubmit={handleOnSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Control
+                  type="text"
+                  required
+                  placeholder="Search for github profiles..."
+                  onChange={e => setSearchTerm(e.target.value)}
+              />
+            </Form.Group>
+          </Form>
+          </Col>
+          <Col xs={12} md={2}>
+            <Button variant="primary" onClick={commitSearch} type="submit" disabled={!searchTerm}>
+              Search
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+  )
+}
   return (
-    <div className="search-profiles">
-      <Form className="search-profiles--form" onSubmit={handleOnSubmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Control
-            type="text"
-            required
-            placeholder="Search for github profiles..."
-          />
-        </Form.Group>
-        <Button variant="primary" onClick={commitSearch} type="submit">
-          Search
-        </Button>
-      </Form>
-    </div>
+      jsxStr
   );
 };
 

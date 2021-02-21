@@ -36,7 +36,15 @@
   font-size: 12px;
   overflow: auto;
 }
-.bar-chart {
-  height: 400px;
-  width: 750px;
+.width-auto {
+  width: auto;
+}
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
 }

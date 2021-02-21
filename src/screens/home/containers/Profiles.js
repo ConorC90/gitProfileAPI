@@ -5,6 +5,9 @@ import isEmpty from "lodash/isEmpty";
 import ProfilesCard from "../components/ProfilesCard";
 import Errors from "../components/Errors";
 import "../home.css";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
 
 const renderProfilesList = (data, query) => {
   if (isEmpty(data)) {
@@ -12,14 +15,14 @@ const renderProfilesList = (data, query) => {
   }
   let { items: profiles } = data;
   return (
-    <div>
+    <Container>
       <h3>Search results for: {query}</h3>
-      <div className="profiles-list">
+      <Row className="profiles-list">
         {profiles.map((profile) => (
-          <ProfilesCard key={profile.id} profile={profile} />
+          <ProfilesCard key={profile.id} profile={profile}/>
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
