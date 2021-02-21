@@ -1,5 +1,5 @@
 import axios from "axios";
-import { REQUEST_PROFILES, RECEIVE_PROFILES, HAS_ERROR } from "./actionTypes";
+import { REQUEST_PROFILES, RECEIVE_PROFILES, HAS_ERROR, IS_FETCHING } from "./actionTypes";
 import store from "../../configureStore";
 
 export const requestProfiles = (query) => ({
@@ -12,13 +12,20 @@ export const receiveProfiles = ({ status, payload }) => ({
   status,
   payload,
 });
+
+export const isFetching = ({status}) => ({
+  type: IS_FETCHING,
+  status
+})
+
 export const hasError = (error) => ({
   type: HAS_ERROR,
-  error,
+  error: error,
 });
 
 export const getProfiles = (query) => {
   return function (dispatch) {
+    dispatch(isFetching(true));
     dispatch(requestProfiles(query));
     const url = `https://api.github.com/search/users?q=${query}`;
     return axios
@@ -28,17 +35,21 @@ export const getProfiles = (query) => {
           receiveProfiles({
             status: "success",
             payload: response.data,
-          })
+          }),
+            dispatch( isFetching({
+              status: false
+            }))
         );
       })
       .catch((error) => {
-        console.log("fetch error", error);
         dispatch(
-          receiveProfiles({
-            status: "error",
-            payload: error,
-          })
+            hasError({
+              error: error,
+            }),
         );
+        dispatch( isFetching({
+          status: false
+        }))
       });
   };
 };

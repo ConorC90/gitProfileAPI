@@ -4,10 +4,10 @@ import Container from "react-bootstrap/Container";
 import { connect } from "react-redux";
 
 const Errors = ({ error }) => {
-  let jsxStr = error.error;
   if (error) {
+  let jsxStr = error.error.message;
     return (
-      <Container className="justify-content-md-center">
+      <Container className="mt-2">
         <Alert variant="danger">
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
           <p>{jsxStr}</p>
@@ -21,7 +21,7 @@ const Errors = ({ error }) => {
 
 const mapStateToProps = (state) => {
   return {
-    error: state.profiles.error,
+    error: state.profiles.error.error,
   };
 };
 

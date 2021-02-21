@@ -22,19 +22,12 @@ const [searchTerm , setSearchTerm] = useState('');
     getProfiles(searchTerm);
   };
 
-  let jsxStr = "";
-  if(isFetching){
-    jsxStr = (
-        <Loading></Loading>
-    )
-  }
-if(!isFetching){
-  jsxStr =  (
+ const jsxStr =  (
       <Container>
         <Row>
           <Col xs={12} md={10}>
           <Form onSubmit={handleOnSubmit}>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
               <Form.Control
                   type="text"
                   required
@@ -52,16 +45,12 @@ if(!isFetching){
         </Row>
       </Container>
   )
-}
-  return (
-      jsxStr
-  );
+
+  return isFetching ? <Loading/> : jsxStr
 };
 
-const mapStateToProps = (state /*, ownProps*/) => {
+const mapStateToProps = (state) => {
   return {
-    query: state.profiles.query,
-    errorMessage: false,
     isFetching: state.profiles.isFetching
   };
 };

@@ -12,8 +12,9 @@ import "./profile.css";
 
 
 const Profile = ({ match: { params } }) => {
-  const [proflieInfo, setProfileInfo] = useState({});
+  const [profileInfo, setProfileInfo] = useState({});
   const [isFetching, setIsFetching] = useState(false);
+
   useEffect(() => {
     setIsFetching(true);
     axios
@@ -30,28 +31,28 @@ const Profile = ({ match: { params } }) => {
   }, [params.ID]);
 
   let jsxStr = "";
-  if (!isEmpty(proflieInfo)) {
+  if (!isEmpty(profileInfo)) {
     jsxStr = (
         <Row xs={1} md={2}>
           <Col>
             <Media className="width-auto m-3">
               <Media.Body>
-                <a href={proflieInfo.html_url}>
-                <h1>{proflieInfo.login}</h1>
+                <a href={profileInfo.html_url}>
+                <h1>{profileInfo.login}</h1>
                 </a>
-                <h3>{proflieInfo.location}</h3>
+                <h3>{profileInfo.location}</h3>
                 <ListGroup>
                   <ListGroup.Item>
-                    Public Repos: {proflieInfo.public_repos}
+                    Public Repos: {profileInfo.public_repos}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    Followers: {proflieInfo.followers}
+                    Followers: {profileInfo.followers}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    Following: {proflieInfo.following}
+                    Following: {profileInfo.following}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    Account created on: {proflieInfo.created_at.slice(0, 10)}
+                    Account created on: {profileInfo.created_at.slice(0, 10)}
                   </ListGroup.Item>
                 </ListGroup>
               </Media.Body>
@@ -63,7 +64,7 @@ const Profile = ({ match: { params } }) => {
             height={225}
             rounded
             className="m-3"
-            src={proflieInfo.avatar_url}
+            src={profileInfo.avatar_url}
             alt="Git hub profile picture"
           />
           </Col>
