@@ -1,5 +1,10 @@
 import axios from "axios";
-import { REQUEST_PROFILES, RECEIVE_PROFILES, HAS_ERROR, IS_FETCHING } from "./actionTypes";
+import {
+  REQUEST_PROFILES,
+  RECEIVE_PROFILES,
+  HAS_ERROR,
+  IS_FETCHING,
+} from "./actionTypes";
 import store from "../../configureStore";
 
 export const requestProfiles = (query) => ({
@@ -13,10 +18,10 @@ export const receiveProfiles = ({ status, payload }) => ({
   payload,
 });
 
-export const isFetching = ({status}) => ({
+export const isFetching = ({ status }) => ({
   type: IS_FETCHING,
-  status
-})
+  status,
+});
 
 export const hasError = (error) => ({
   type: HAS_ERROR,
@@ -36,20 +41,24 @@ export const getProfiles = (query) => {
             status: "success",
             payload: response.data,
           }),
-            dispatch( isFetching({
-              status: false
-            }))
+          dispatch(
+            isFetching({
+              status: false,
+            })
+          )
         );
       })
       .catch((error) => {
         dispatch(
-            hasError({
-              error: error,
-            }),
+          hasError({
+            error: error,
+          })
         );
-        dispatch( isFetching({
-          status: false
-        }))
+        dispatch(
+          isFetching({
+            status: false,
+          })
+        );
       });
   };
 };

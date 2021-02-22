@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import isEmpty from "lodash/isEmpty";
 import ProfilesCard from "../components/ProfilesCard";
 import "../home.css";
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 const renderProfilesList = (data, query) => {
   if (isEmpty(data)) {
@@ -17,7 +16,7 @@ const renderProfilesList = (data, query) => {
       <h3>Search results for: {query}</h3>
       <Row className="profiles-list">
         {profiles.map((profile) => (
-          <ProfilesCard key={profile.id} profile={profile}/>
+          <ProfilesCard key={profile.id} profile={profile} />
         ))}
       </Row>
     </Container>
@@ -25,7 +24,7 @@ const renderProfilesList = (data, query) => {
 };
 
 const Profiles = ({ data, query }) => {
-  let  jsxStr = renderProfilesList(data, query);
+  let jsxStr = renderProfilesList(data, query);
   return <div className="profiles">{jsxStr}</div>;
 };
 

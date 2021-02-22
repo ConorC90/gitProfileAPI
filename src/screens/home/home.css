@@ -39,12 +39,12 @@
 .width-auto {
   width: auto;
 }
-.flex{
+.flex {
   display: flex;
 }
-.justify-center{
+.justify-center {
   justify-content: center;
 }
-.align-center{
+.align-center {
   align-items: center;
 }

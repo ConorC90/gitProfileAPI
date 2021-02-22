@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 
 const ProfilesCard = ({ profile }) => {
   return (
-    <Col className="mt-2"  xs={12} sm={6} md={4} lg={3} >
+    <Col className="mt-2" xs={12} sm={6} md={4} lg={3}>
       <Link to={`/profile/${profile.login}`}>
         <Card>
           <Card.Img variant="top" src={profile.avatar_url} />

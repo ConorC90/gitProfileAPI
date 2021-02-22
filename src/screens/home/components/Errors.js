@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 const Errors = ({ error }) => {
   if (error) {
-  let jsxStr = error.error.message;
+    let jsxStr = error.error.message;
     return (
       <Container className="mt-2">
         <Alert variant="danger">

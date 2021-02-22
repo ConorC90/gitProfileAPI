@@ -1,4 +1,9 @@
-import { REQUEST_PROFILES, RECEIVE_PROFILES, HAS_ERROR, IS_FETCHING } from "./actionTypes";
+import {
+  REQUEST_PROFILES,
+  RECEIVE_PROFILES,
+  HAS_ERROR,
+  IS_FETCHING,
+} from "./actionTypes";
 
 const initalState = {
   query: "",
@@ -25,9 +30,9 @@ export const profiles = (state = initalState, action) => {
         error: action,
       });
     case IS_FETCHING:
-      return Object.assign({},state,{
-        isFetching: action.status
-      })
+      return Object.assign({}, state, {
+        isFetching: action.status,
+      });
 
     default:
       return state;

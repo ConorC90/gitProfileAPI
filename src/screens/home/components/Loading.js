@@ -4,13 +4,17 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 
 const Loading = () => {
-return(
+  return (
     <Row className="justify-content-center">
-      <Col><h2>Loading...</h2></Col>
-      <Col><Spinner animation="border" role="status"/></Col>
+      <Col>
+        <h2>Loading...</h2>
+      </Col>
+      <Col>
+        <Spinner animation="border" role="status" />
+      </Col>
     </Row>
-)
+  );
 };
 
-export {Loading};
-export default Loading
+export { Loading };
+export default Loading;
