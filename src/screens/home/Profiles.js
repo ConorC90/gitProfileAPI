@@ -5,7 +5,6 @@ import ProfilesCard from "../../components/ProfilesCard";
 import "../../home.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Errors from "../../components/Errors";
 
 const renderProfilesList = (data, query) => {
   if (isEmpty(data)) {
