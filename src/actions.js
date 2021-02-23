@@ -5,7 +5,7 @@ import {
   HAS_ERROR,
   IS_FETCHING,
 } from "./actionTypes";
-import store from "../../configureStore";
+import store from "./configureStore";
 
 export const requestProfiles = (query) => ({
   type: REQUEST_PROFILES,
@@ -62,6 +62,8 @@ export const getProfiles = (query) => {
       });
   };
 };
+
+
 export const getError = (error) => {
   store.dispatch(
     hasError({

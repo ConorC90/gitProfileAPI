@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Loading from "../home/components/Loading";
+import Loading from "../../components/Loading";
 import isEmpty from "lodash/isEmpty";
 import axios from "axios";
 import Image from "react-bootstrap/Image";
@@ -7,10 +7,10 @@ import Media from "react-bootstrap/Media";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import "./profile.css";
+import "../../profile.css";
 import BackButton from "../../components/BackButton";
 
-const Profile = ({ match: { params } }) => {
+const Index = ({ match: { params } }) => {
   const [profileInfo, setProfileInfo] = useState({});
   const [isFetching, setIsFetching] = useState(false);
 
@@ -83,4 +83,4 @@ const Profile = ({ match: { params } }) => {
     </div>
   );
 };
-export default Profile;
+export default Index;

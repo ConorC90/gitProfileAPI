@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./screens/home";
-import Profile from "./screens/profile";
-import NotFoundPage from "./screens/NotFoundPage";
+import Home from "./screens/home/index";
+import Profile from "./screens/proflie/index";
+import NotFoundPage from "./screens/NotFoundPage/index";
 
 export default (
   <Switch>

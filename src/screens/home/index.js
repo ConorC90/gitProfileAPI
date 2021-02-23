@@ -1,10 +1,10 @@
 import React from "react";
-import Search from "./containers/Search";
-import Errors from "./components/Errors";
-import Profiles from "./containers/Profiles";
-import "./home.css";
+import Search from "./Search";
+import Errors from "../../components/Errors";
+import Profiles from "./Profiles";
+import "../../home.css";
 
-const Home = () => (
+const Index = () => (
   <div id="home" className="page">
     <div className="container">
       <Search />
@@ -13,4 +13,4 @@ const Home = () => (
     </div>
   </div>
 );
-export default Home;
+export default Index;

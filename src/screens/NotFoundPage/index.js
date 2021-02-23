@@ -1,11 +1,11 @@
 import React from "react";
-import FourZeroFour from "../media/404-not-found.jpg";
+import FourZeroFour from "../../media/404-not-found.jpg";
 import Container from "react-bootstrap/Container";
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/BackButton";
 import Row from "react-bootstrap/cjs/Row";
 import Col from "react-bootstrap/cjs/Col";
 
-function NotFoundPage({ text, route }) {
+function Index() {
   return (
     <Container>
       <Row>
@@ -21,4 +21,4 @@ function NotFoundPage({ text, route }) {
     </Container>
   );
 }
-export default NotFoundPage;
+export default Index;

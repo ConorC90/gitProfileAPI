@@ -3,8 +3,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { getProfiles } from "../actions";
-import { Loading } from "../components/Loading";
+import { getProfiles } from "../../actions";
+import { Loading } from "../../components/Loading";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 

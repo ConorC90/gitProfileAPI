@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { connectRouter } from "connected-react-router";
-import { profiles } from "./screens/home/reducers";
+import { profiles } from "./reducers";
 
 export default (history) =>
   combineReducers({
