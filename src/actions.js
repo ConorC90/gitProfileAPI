@@ -63,7 +63,6 @@ export const getProfiles = (query) => {
   };
 };
 
-
 export const getError = (error) => {
   store.dispatch(
     hasError({

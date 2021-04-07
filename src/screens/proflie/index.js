@@ -9,10 +9,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../../profile.css";
 import BackButton from "../../components/BackButton";
+import NotFoundPage from "../NotFoundPage";
 
 const Index = ({ match: { params } }) => {
   const [profileInfo, setProfileInfo] = useState({});
   const [isFetching, setIsFetching] = useState(false);
+
+  let jsxStr = "";
 
   useEffect(() => {
     setIsFetching(true);
@@ -21,15 +24,16 @@ const Index = ({ match: { params } }) => {
       .then((response) => {
         setProfileInfo(response.data);
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         setProfileInfo({});
+        jsxStr = <NotFoundPage></NotFoundPage>;
       })
       .finally(() => {
         setIsFetching(false);
       });
   }, [params.ID]);
 
-  let jsxStr = "";
   if (!isEmpty(profileInfo)) {
     jsxStr = (
       <Row xs={1} md={2}>
@@ -78,6 +82,7 @@ const Index = ({ match: { params } }) => {
     <div id="profile" className="page">
       <div className="container">
         {isFetching && <Loading></Loading>}
+        {isEmpty(profileInfo) && !isFetching && <NotFoundPage></NotFoundPage>}
         {jsxStr}
       </div>
     </div>
